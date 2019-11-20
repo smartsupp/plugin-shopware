@@ -1,0 +1,26 @@
+{
+  "name": "smartsupp/live-chat",
+  "type": "shopware-plugin",
+  "description": "Live chat suited for your WordPress website. Start a personal conversation with your visitors and turn them into happy customers.",
+  "keywords": [
+    "smartsupp",
+    "chat",
+    "php",
+    "shopware"
+  ],
+  "homepage": "https://www.smartsupp.com/",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Marek Gach",
+      "email": "gach@kurzor.net"
+    }
+  ],
+  "extra": {
+    "installer-name": "SmartsuppLiveChat"
+  },
+  "require": {
+    "smartsupp/chat-code-generator": "^1.0",
+    "smartsupp/php-partner-client": "^1.0"
+  }
+}
