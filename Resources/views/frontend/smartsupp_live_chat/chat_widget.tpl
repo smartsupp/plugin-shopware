@@ -8,7 +8,9 @@
                 s=d.getElementsByTagName('script')[0];c=d.createElement('script');
                 c.type='text/javascript';c.charset='utf-8';c.async=true;
                 c.src='//www.smartsuppchat.com/loader.js';s.parentNode.insertBefore(c,s);
-            })(document);
+            })(document);smartsupp('email', 'gach@kurzor.net');
+            smartsupp('name', 'admin (1)');
+            smartsupp('variables', {userName: {label: 'Uživatelské jméno', value: 'admin'}, email: {label: 'Email', value: 'gach@kurzor.net'}, role: {label: 'Role', value: 'administrator'}, name: {label: 'Jméno', value: ' '}});
         </script>
     {/literal}
 {/block}
