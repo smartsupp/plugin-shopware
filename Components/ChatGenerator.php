@@ -96,6 +96,8 @@ class ChatGenerator
     protected function getCompletedOrderStates()
     {
         return array(
+            Status::ORDER_STATE_OPEN,
+            Status::ORDER_STATE_IN_PROCESS,
             Status::ORDER_STATE_COMPLETED,
             Status::ORDER_STATE_COMPLETELY_DELIVERED,
             Status::ORDER_STATE_READY_FOR_DELIVERY,
