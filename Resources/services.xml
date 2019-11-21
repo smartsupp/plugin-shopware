@@ -9,5 +9,17 @@
             <argument type="service" id="template"/>
             <tag name="shopware.event_subscriber"/>
         </service>
+        <!-- Register WidgerRegistration subscriber -->
+        <service id="smartsupp_live_chat.subscriber.widget" class="SmartsuppLiveChat\Subscriber\Widget">
+            <argument>%smartsupp_live_chat.plugin_name%</argument>
+            <argument>%smartsupp_live_chat.plugin_dir%</argument>
+            <argument type="service" id="shopware.plugin.cached_config_reader" />
+            <argument type="service" id="smartsupp_live_chat.components.chat_generator" />
+            <tag name="shopware.event_subscriber"/>
+        </service>
+        <!-- Register ChatGenerator service -->
+        <service id="smartsupp_live_chat.components.chat_generator" class="SmartsuppLiveChat\Components\ChatGenerator">
+            <argument type="service" id="models" />
+        </service>
     </services>
 </container>
