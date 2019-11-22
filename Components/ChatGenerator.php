@@ -2,6 +2,7 @@
 
 namespace SmartsuppLiveChat\Components;
 
+use Shopware\Components\ShopwareReleaseStruct;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Customer\Customer;
 use Shopware\Models\Order\Order;
@@ -18,13 +19,18 @@ class ChatGenerator
      */
     protected $modelManager;
 
+    /** @var ShopwareReleaseStruct $shopwareVersion */
+    protected $shopwareVersion;
+
     /**
      * ChatGenerator constructor.
      * @param ModelManager $modelManager
+     * @param int $shopwareVersion
      */
-    public function __construct(ModelManager $modelManager)
+    public function __construct(ModelManager $modelManager, ShopwareReleaseStruct $shopwareVersion)
     {
         $this->modelManager = $modelManager;
+        $this->shopwareVersion = $shopwareVersion;
     }
 
     /**
@@ -40,6 +46,7 @@ class ChatGenerator
     public function generateJS($key)
     {
         $chat = new \Smartsupp\ChatGenerator($key);
+        $chat->setPlatform('Shopware ' . $this->shopwareVersion->getVersion());
 
         // get logged in user ID from session
         $userId = Shopware()->Session()->get(self::CUSTOMER_ID_KEY);

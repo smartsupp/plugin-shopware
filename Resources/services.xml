@@ -20,6 +20,7 @@
         <!-- Register ChatGenerator service -->
         <service id="smartsupp_live_chat.components.chat_generator" class="SmartsuppLiveChat\Components\ChatGenerator">
             <argument type="service" id="models" />
+            <argument type="service" id="shopware.release" />
         </service>
     </services>
 </container>
