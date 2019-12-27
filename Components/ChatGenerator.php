@@ -39,7 +39,7 @@ class ChatGenerator
     const CUSTOMER_ID_KEY = 'sUserId';
 
     /**
-     * @param $key
+     * @param string $key
      * @return string
      * @throws \Exception
      */

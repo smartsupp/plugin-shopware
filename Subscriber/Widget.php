@@ -62,6 +62,20 @@ class Widget implements SubscriberInterface
         $controller = $args->get('subject');
         $view = $controller->View();
 
-        $view->assign('smartsupp_js', $this->chatGenerator->generateJS('3b3f4ef0a3fe414c5d68ae5758eb23334eebcd7e'));
+        $active = $this->config['active'] ?? false;
+        $smartsuppKey = $this->config['chatId'] ?? null;
+        $optionalCode = $this->config['optionalCode'] ?? null;
+        $widgetJs = null;
+
+        if ($active) {
+            $widgetJs = $this->chatGenerator->generateJS($smartsuppKey);
+
+            if ($optionalCode) {
+                $widgetJs .= '<script>' . stripcslashes($optionalCode) . '</script>';
+            }
+        }
+
+        $view->assign('smartsupp_js', $widgetJs);
+
     }
 }
