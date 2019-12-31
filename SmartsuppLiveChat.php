@@ -32,4 +32,22 @@ class SmartsuppLiveChat extends Plugin
         // on plugin deactivation clear the cache
         $deactivateContext->scheduleClearCache(DeactivateContext::CACHE_LIST_ALL);
     }
+
+    /**
+     * @return array
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            'Enlight_Controller_Dispatcher_ControllerPath_Backend_SmartsuppLiveChat' => 'onGetBackendController'
+        ];
+    }
+
+    /**
+     * @return string
+     */
+    public function onGetBackendController()
+    {
+        return __DIR__ . '/Controllers/Backend/SmartsuppLiveChat.php';
+    }
 }

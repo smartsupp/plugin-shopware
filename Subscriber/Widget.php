@@ -76,6 +76,5 @@ class Widget implements SubscriberInterface
         }
 
         $view->assign('smartsupp_js', $widgetJs);
-
     }
 }
