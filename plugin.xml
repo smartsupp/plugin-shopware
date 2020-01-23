@@ -15,4 +15,16 @@
         <changes lang="de">Erstveröffentlichung</changes>
         <changes lang="en">First release</changes>
     </changelog>
+    <description lang="en">
+        <![CDATA[
+   <b>Smartsupp Live Chat</b>
+   <p>Describes Plugin and contains a Link to manual/description in the community-store: <a href="https://store.shopware.com/search?sSearch=SmartsuppLiveChat">Plugin Manual</a></p>
+   ]]>
+    </description>
+    <description lang="de">
+        <![CDATA[
+   <b>Smartsupp Live Chat</b>
+   <p>Beschreibt Plugin und enthält einen Link zur Anleitung/Beschreibung im Community Store: <a href="https://store.shopware.com/search?sSearch=SmartsuppLiveChat">Plugin Anleitung</a></p>
+   ]]>
+    </description>
 </plugin>

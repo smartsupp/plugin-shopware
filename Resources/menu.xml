@@ -10,7 +10,7 @@
             <action>index</action>
             <class>sprite-custom-menu-smartsupp</class>
             <parent identifiedBy="controller">ConfigurationMenu</parent>
-            <onclick>Shopware.ModuleManager.createSimplifiedModule("SmartsuppLiveChat", { "title": "Smartsupp Settings" })</onclick>
+            <onclick>Shopware.ModuleManager.createSimplifiedModule("SmartsuppLiveChat", { "title": "Smartsupp" })</onclick>
         </entry>
     </entries>
 </menu>

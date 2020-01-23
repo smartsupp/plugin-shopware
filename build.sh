@@ -1,4 +1,6 @@
 #!/bin/bash
+# script to pack the release ZIP
+# WARNING: need to be run directly from plugin root
 
 lastTag=$(git tag | tail -n 1)
 customTag=$1

@@ -15,8 +15,10 @@ require_once __DIR__ . '/vendor/autoload.php';
  */
 class SmartsuppLiveChat extends Plugin
 {
+    const PLUGIN_NAME = 'SmartsuppLiveChat';
+
     /**
-     * @param ActivateContext $activateContext
+     * @param ActivateContext $activateContext context object
      */
     public function activate(ActivateContext $activateContext)
     {
@@ -25,7 +27,7 @@ class SmartsuppLiveChat extends Plugin
     }
 
     /**
-     * @param DeactivateContext $deactivateContext
+     * @param DeactivateContext $deactivateContext context object
      */
     public function deactivate(DeactivateContext $deactivateContext)
     {
@@ -34,7 +36,7 @@ class SmartsuppLiveChat extends Plugin
     }
 
     /**
-     * @return array
+     * {@inheritdoc}
      */
     public static function getSubscribedEvents()
     {
@@ -44,7 +46,7 @@ class SmartsuppLiveChat extends Plugin
     }
 
     /**
-     * @return string
+     * @return string path to backend controller
      */
     public function onGetBackendController()
     {

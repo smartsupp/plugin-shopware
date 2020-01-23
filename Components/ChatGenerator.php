@@ -2,6 +2,7 @@
 
 namespace SmartsuppLiveChat\Components;
 
+use Exception;
 use Shopware\Components\ShopwareReleaseStruct;
 use Shopware\Components\Model\ModelManager;
 use Shopware\Models\Customer\Customer;
@@ -9,23 +10,30 @@ use Shopware\Models\Order\Order;
 use Shopware\Models\Order\Status;
 
 /**
- * Class ChatGenerator
+ * Class ChatGenerator is helper class over Smartsupp ChatGenerator library.
  * @package SmartsuppLiveChat\Components
  */
 class ChatGenerator
 {
     /**
-     * @var ModelManager $modelManager
+     * @var string key of customer ID in session data
+     */
+    const CUSTOMER_ID_KEY = 'sUserId';
+
+    /**
+     * @var ModelManager $modelManager model manager to access database layer
      */
     protected $modelManager;
 
-    /** @var ShopwareReleaseStruct $shopwareVersion */
+    /**
+     * @var ShopwareReleaseStruct $shopwareVersion Shopware release version information
+     */
     protected $shopwareVersion;
 
     /**
      * ChatGenerator constructor.
-     * @param ModelManager $modelManager
-     * @param int $shopwareVersion
+     * @param ModelManager $modelManager model manager to access database layer
+     * @param ShopwareReleaseStruct $shopwareVersion Shopware release version information
      */
     public function __construct(ModelManager $modelManager, ShopwareReleaseStruct $shopwareVersion)
     {
@@ -34,14 +42,11 @@ class ChatGenerator
     }
 
     /**
-     * @var string key of customer ID in session data
-     */
-    const CUSTOMER_ID_KEY = 'sUserId';
-
-    /**
-     * @param string $key
-     * @return string
-     * @throws \Exception
+     * Generate Smartsupp chat JS code upon given parameters and obtained user information.
+     *
+     * @param string $key Smartsupp key
+     * @return string chat JS code
+     * @throws Exception
      */
     public function generateJS($key)
     {
@@ -52,17 +57,22 @@ class ChatGenerator
         $userId = Shopware()->Session()->get(self::CUSTOMER_ID_KEY);
 
         if ($userId) {
-            /** @var Customer $user */
-            $user = $this->modelManager->find('Shopware\\Models\\Customer\\Customer', $userId);
-            $this->populateChatWithUserData($chat, $user);
+            try {
+                /** @var Customer $user */
+                $user = $this->modelManager->find('Shopware\\Models\\Customer\\Customer', $userId);
+                $this->populateChatWithUserData($chat, $user);
+            } catch (Exception $e) { } // in case when user with given ID not found, should never happen
         }
 
+        // may throw exception when key is not set, this should not occur if this class is used properly
         return $chat->render();
     }
 
     /**
+     * Set logged in user information (if any) to Smartsupp JS code.
+     *
      * @param \Smartsupp\ChatGenerator $chat
-     * @param Customer $user
+     * @param Customer $user customer database object
      */
     protected function populateChatWithUserData(\Smartsupp\ChatGenerator $chat, Customer $user)
     {
@@ -72,6 +82,7 @@ class ChatGenerator
         $chat->setVariable('name', 'Name', $fullName);
         $chat->setVariable('email', 'Email', $user->getEmail());
 
+        // may be null if no orders so far
         $shippingAddress = $user->getDefaultShippingAddress();
 
         if ($shippingAddress) {
@@ -93,12 +104,16 @@ class ChatGenerator
             }
         }
 
+        // set order information, even when no orders those values are set to 0
         $chat->setVariable('spending', 'Spending', $orderPrice);
         $chat->setVariable('orders', 'Orders', $orderCount);
     }
 
     /**
-     * @return array
+     * Obtain a list of order states where it can be stated that order is tracked by Smartsupp JS
+     * as completed.
+     *
+     * @return array list of order states we take as finished order
      */
     protected function getCompletedOrderStates()
     {

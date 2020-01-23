@@ -18,10 +18,9 @@
             <argument type="service" id="models" />
             <argument type="service" id="shopware.release" />
         </service>
-        <!-- Register WidgerRegistration subscriber -->
+        <!-- Register Widget subscriber -->
         <service id="smartsupp_live_chat.subscriber.widget" class="SmartsuppLiveChat\Subscriber\Widget">
             <argument>%smartsupp_live_chat.plugin_name%</argument>
-            <argument>%smartsupp_live_chat.plugin_dir%</argument>
             <argument type="service" id="shopware.plugin.cached_config_reader" />
             <argument type="service" id="smartsupp_live_chat.components.chat_generator" />
             <tag name="shopware.event_subscriber"/>
