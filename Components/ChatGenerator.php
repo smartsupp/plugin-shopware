@@ -92,7 +92,7 @@ class ChatGenerator
         $orderPrice = 0;
         $orderCount = 0;
 
-        /** @var Order[] $order */
+        /** @var Order $order */
         foreach ($user->getOrders() as $order) {
             /** @var Status $status */
             $status = $order->getOrderStatus();

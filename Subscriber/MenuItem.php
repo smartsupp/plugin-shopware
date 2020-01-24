@@ -3,7 +3,7 @@
 namespace SmartsuppLiveChat\Subscriber;
 
 use Enlight\Event\SubscriberInterface;
-use Enlight_Event_EventArgs;
+use Enlight_Controller_ActionEventArgs;
 
 /**
  * Class MenuItem implements subscriber event to put Smartsupp settings page link together with
@@ -25,9 +25,9 @@ class MenuItem implements SubscriberInterface
     /**
      * Render template to add custom CSS class for menu item to include Smartsupp icon.
      *
-     * @param Enlight_Event_EventArgs $args
+     * @param Enlight_Controller_ActionEventArgs $args
      */
-    public function setupMenuIcon(Enlight_Event_EventArgs $args)
+    public function setupMenuIcon(Enlight_Controller_ActionEventArgs $args)
     {
         /** @var \Enlight_Controller_Action $controller */
         $controller = $args->getSubject();

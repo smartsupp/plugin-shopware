@@ -22,5 +22,8 @@
   "require": {
     "smartsupp/chat-code-generator": "^1.0",
     "smartsupp/php-partner-client": "^1.0"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "^0.12.7"
   }
 }

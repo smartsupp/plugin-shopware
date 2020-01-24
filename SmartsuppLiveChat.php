@@ -23,7 +23,7 @@ class SmartsuppLiveChat extends Plugin
     public function activate(ActivateContext $activateContext)
     {
         // on plugin activation clear the cache
-        $activateContext->scheduleClearCache(ActivateContext::CACHE_LIST_ALL);
+        $activateContext->scheduleClearCache([ActivateContext::CACHE_TAG_CONFIG, ActivateContext::CACHE_TAG_TEMPLATE]);
     }
 
     /**
@@ -32,7 +32,7 @@ class SmartsuppLiveChat extends Plugin
     public function deactivate(DeactivateContext $deactivateContext)
     {
         // on plugin deactivation clear the cache
-        $deactivateContext->scheduleClearCache(DeactivateContext::CACHE_LIST_ALL);
+        $deactivateContext->scheduleClearCache([ActivateContext::CACHE_TAG_CONFIG, ActivateContext::CACHE_TAG_TEMPLATE]);
     }
 
     /**
