@@ -157,7 +157,7 @@ class Shopware_Controllers_Backend_SmartsuppLiveChat extends Enlight_Controller_
             return $default;
         }
 
-        return $config[$name] ?? $default;
+        return $config[$name];
     }
 
     /**

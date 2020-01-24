@@ -58,9 +58,9 @@ class Widget implements SubscriberInterface
         $view = $controller->View();
 
         // obtain config values or set default ones
-        $active = $this->config['active'] ?? false;
-        $smartsuppKey = $this->config['chatId'] ?? null;
-        $optionalCode = $this->config['optionalCode'] ?? null;
+        $active = !empty($this->config['active']) ? $this->config['active'] : false;
+        $smartsuppKey = !empty($this->config['chatId']) ? $this->config['chatId'] : null;
+        $optionalCode = !empty($this->config['optionalCode']) ? $this->config['optionalCode'] : null;
         $widgetJs = null;
 
         // only render if chat is set as active
