@@ -48,7 +48,7 @@ class ChatGenerator
      * @return string chat JS code
      * @throws Exception
      */
-    public function generateJS($key)
+    public function generateJS($key, $async = true)
     {
         $chat = new \Smartsupp\ChatGenerator($key);
         $chat->setPlatform('Shopware ' . $this->shopwareVersion->getVersion());
@@ -63,7 +63,8 @@ class ChatGenerator
                 $this->populateChatWithUserData($chat, $user);
             } catch (Exception $e) { } // in case when user with given ID not found, should never happen
         }
-
+        // set if to load async after some delay
+        $chat->setAsync($async);
         // may throw exception when key is not set, this should not occur if this class is used properly
         return $chat->render();
     }
