@@ -8,23 +8,23 @@
     "packages": [
         {
             "name": "smartsupp/chat-code-generator",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/smartsupp/chat-code-generator.git",
-                "reference": "1f63b44aeb90a1cd9e37b260a35b0ccb3377feea"
+                "reference": "a8f52d5ecae8cb9cfb870afa19c8ed2cb914f77e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/smartsupp/chat-code-generator/zipball/1f63b44aeb90a1cd9e37b260a35b0ccb3377feea",
-                "reference": "1f63b44aeb90a1cd9e37b260a35b0ccb3377feea",
+                "url": "https://api.github.com/repos/smartsupp/chat-code-generator/zipball/a8f52d5ecae8cb9cfb870afa19c8ed2cb914f77e",
+                "reference": "a8f52d5ecae8cb9cfb870afa19c8ed2cb914f77e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "4.7.*"
+                "phpunit/phpunit": "4.8.*"
             },
             "type": "library",
             "extra": {
@@ -49,7 +49,7 @@
             "keywords": [
                 "chat"
             ],
-            "time": "2018-11-08T15:36:32+00:00"
+            "time": "2019-09-24T10:36:09+00:00"
         },
         {
             "name": "smartsupp/php-partner-client",
@@ -95,16 +95,16 @@
     "packages-dev": [
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.7",
+            "version": "0.12.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "07fa7958027fd98c567099bbcda5d6a0f2ec5197"
+                "reference": "37bdd26a80235d0f9045b49f4151102b7831cbe2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/07fa7958027fd98c567099bbcda5d6a0f2ec5197",
-                "reference": "07fa7958027fd98c567099bbcda5d6a0f2ec5197",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/37bdd26a80235d0f9045b49f4151102b7831cbe2",
+                "reference": "37bdd26a80235d0f9045b49f4151102b7831cbe2",
                 "shasum": ""
             },
             "require": {
@@ -130,7 +130,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2020-01-20T21:59:06+00:00"
+            "time": "2020-03-02T22:29:43+00:00"
         }
     ],
     "aliases": [],

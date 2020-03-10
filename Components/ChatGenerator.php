@@ -45,7 +45,7 @@ class ChatGenerator
      * Generate Smartsupp chat JS code upon given parameters and obtained user information.
      *
      * @param string $key Smartsupp key
-     * @param string $async to load async
+     * @param bool $async to load async
      * @return string chat JS code
      * @throws Exception
      */
