@@ -3,6 +3,7 @@
 namespace SmartsuppLiveChat;
 
 use Shopware\Components\Plugin;
+use Shopware\Components\Plugin\ConfigReader;
 use Shopware\Components\Plugin\Context\ActivateContext;
 use Shopware\Components\Plugin\Context\DeactivateContext;
 
@@ -31,8 +32,15 @@ class SmartsuppLiveChat extends Plugin
      */
     public function deactivate(DeactivateContext $deactivateContext)
     {
-        // on plugin deactivation clear the cache
-        $deactivateContext->scheduleClearCache(ActivateContext::CACHE_LIST_DEFAULT);
+        /** @var ConfigReader $configReader */
+        $configReader = $this->container->get('shopware.plugin.config_reader');
+
+        $config = $configReader->getByPluginName(self::PLUGIN_NAME);
+
+        // on plugin deactivation with enabled account clear the cache
+        if ($config['active']) {
+            $deactivateContext->scheduleClearCache(ActivateContext::CACHE_LIST_DEFAULT);
+        }
     }
 
     /**
