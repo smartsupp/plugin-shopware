@@ -6,7 +6,7 @@
 
     <version>1.0.0</version>
     <copyright>(c) by Smartsupp since 2019</copyright>
-    <license>MIT</license>
+    <license>GPL-3.0-or-later</license>
     <link>https://www.smartsupp.com/</link>
     <author>Smartsupp</author>
     <compatibility minVersion="5.3.0"/>
