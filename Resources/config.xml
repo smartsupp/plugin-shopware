@@ -4,8 +4,8 @@
     <elements>
         <element type="boolean">
             <name>active</name>
-            <label lang="de">Aktiv - finden Sie die Einstellungen im Hauptmenü</label>
-            <label lang="en">Active - find setup in main menu</label>
+            <label lang="de">Aktiviert für diesen Shop</label>
+            <label lang="en">Active for this Shop</label>
             <value>false</value>
         </element>
         <element type="text">
