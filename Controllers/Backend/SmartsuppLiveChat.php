@@ -9,6 +9,7 @@ use Shopware\Models\Shop\Repository;
 use Shopware\Models\Shop\Shop;
 use Smartsupp\Auth\Api;
 use SmartsuppLiveChat\SmartsuppLiveChat;
+use Shopware\Components\CacheManager;
 
 /**
  * Class Shopware_Controllers_Backend_SmartsuppLiveChat implements logic for backend controller.
@@ -124,6 +125,8 @@ class Shopware_Controllers_Backend_SmartsuppLiveChat extends Enlight_Controller_
         $configWriter = $this->container->get('shopware.plugin.config_writer');
         /** @var InstallerService $pluginManager */
         $pluginManager = $this->container->get('shopware_plugininstaller.plugin_manager');
+        /** @var CacheManager $cacheManager */
+        $cacheManager = $this->container->get('shopware.cache_manager');
 
         // get plugin by name
         $plugin = $pluginManager->getPluginByName(SmartsuppLiveChat::PLUGIN_NAME);
@@ -135,6 +138,8 @@ class Shopware_Controllers_Backend_SmartsuppLiveChat extends Enlight_Controller_
         $shop = $shopRepository->find($shopRepository->getActiveDefault()->getId());
 
         $configWriter->savePluginConfig($plugin, $options, $shop);
+
+        $cacheManager->clearByTag(CacheManager::CACHE_TAG_CONFIG);
     }
 
     /**
