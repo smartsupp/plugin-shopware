@@ -17,5 +17,5 @@ cd SmartsuppLiveChat
 composer install --no-dev -n -o
 composer dump-autoload -o
 cd ../
-zip -9 -r SmartsuppLiveChat-${lastTag}.zip SmartsuppLiveChat -x '*.gitignore' -x '*.DS_Store' -x 'Thumbs.db' -x '*.git*' -x '*__MACOSX*' -x '*.zip' -x '*.tar' -x '*.tar.gz' -x '*.phar' -x '*.php_cs.dist' -x '*phpstan.neon'
+zip -9 -r SmartsuppLiveChat-${lastTag}.zip SmartsuppLiveChat -x '*.gitignore' -x '*.DS_Store' -x 'Thumbs.db' -x '*.git*' -x '*__MACOSX*' -x '*.zip' -x '*.tar' -x '*.tar.gz' -x '*.phar' -x '*.php_cs.dist' -x '*phpstan.neon' -x 'build.sh' -x 'composer.lock'
 rm -r SmartsuppLiveChat
