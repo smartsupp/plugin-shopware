@@ -32,17 +32,17 @@ class SmartsuppLiveChat extends Plugin
      */
     public function deactivate(DeactivateContext $deactivateContext)
     {
-        /** @var ConfigReader $configReader */
-        $configReader = $this->container->get('shopware.plugin.config_reader');
-
-        $config = $configReader->getByPluginName(self::PLUGIN_NAME);
-
         // on plugin deactivation with enabled account clear the cache
-        if ($config['active']) {
+        if ($this->isPluginActivated()) {
             $deactivateContext->scheduleClearCache(ActivateContext::CACHE_LIST_DEFAULT);
         }
     }
 
+    /**
+     * Register cookies
+     *
+     * @return \Shopware\Bundle\CookieBundle\CookieCollection|void
+     */
     public function addComfortCookie()
     {
         // just to be safe as for older Shopware versions those classes does not exist
@@ -52,14 +52,32 @@ class SmartsuppLiveChat extends Plugin
 
         // needs to put here full class path to not break in older releases without Cookie bundle
         $collection = new \Shopware\Bundle\CookieBundle\CookieCollection();
-        $collection->add(new \Shopware\Bundle\CookieBundle\Structs\CookieStruct(
-            'ssupp',
-            '/^ssupp$/',
-            'Smartsupp cookies in namespace ssupp',
-            \Shopware\Bundle\CookieBundle\Structs\CookieGroupStruct::COMFORT
-        ));
+
+        // add only if plugin is assigned with Smartsupp account
+        if ($this->isPluginActivated()) {
+            $collection->add(new \Shopware\Bundle\CookieBundle\Structs\CookieStruct(
+                'ssupp',
+                '/^ssupp$/',
+                'Smartsupp Livechat',
+                \Shopware\Bundle\CookieBundle\Structs\CookieGroupStruct::COMFORT
+            ));
+        }
 
         return $collection;
+    }
+
+    /**
+     * Check if plugin was assigned with Smartsupp account.
+     *
+     * @return boolean
+     */
+    protected function isPluginActivated()
+    {
+        /** @var ConfigReader $configReader */
+        $configReader = $this->container->get('shopware.plugin.config_reader');
+        $config = $configReader->getByPluginName(self::PLUGIN_NAME);
+
+        return $config['active'];
     }
 
     /**
