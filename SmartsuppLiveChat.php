@@ -43,13 +43,33 @@ class SmartsuppLiveChat extends Plugin
         }
     }
 
+    public function addComfortCookie()
+    {
+        // just to be safe as for older Shopware versions those classes does not exist
+        if (!class_exists('\Shopware\Bundle\CookieBundle\CookieCollection')) {
+            return;
+        }
+
+        // needs to put here full class path to not break in older releases without Cookie bundle
+        $collection = new \Shopware\Bundle\CookieBundle\CookieCollection();
+        $collection->add(new \Shopware\Bundle\CookieBundle\Structs\CookieStruct(
+            'ssupp',
+            '/^ssupp$/',
+            'Smartsupp cookies in namespace ssupp',
+            \Shopware\Bundle\CookieBundle\Structs\CookieGroupStruct::COMFORT
+        ));
+
+        return $collection;
+    }
+
     /**
      * {@inheritdoc}
      */
     public static function getSubscribedEvents()
     {
         return [
-            'Enlight_Controller_Dispatcher_ControllerPath_Backend_SmartsuppLiveChat' => 'onGetBackendController'
+            'Enlight_Controller_Dispatcher_ControllerPath_Backend_SmartsuppLiveChat' => 'onGetBackendController',
+            'CookieCollector_Collect_Cookies' => 'addComfortCookie',
         ];
     }
 
