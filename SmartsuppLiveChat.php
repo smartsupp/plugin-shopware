@@ -57,6 +57,12 @@ class SmartsuppLiveChat extends Plugin
         if ($this->isPluginActivated()) {
             $collection->add(new \Shopware\Bundle\CookieBundle\Structs\CookieStruct(
                 'ssupp',
+                '/^(ssupp.chatid|ssupp.vid|ssupp.opened)$/',
+                'Smartsupp Livechat',
+                \Shopware\Bundle\CookieBundle\Structs\CookieGroupStruct::TECHNICAL
+            ));
+            $collection->add(new \Shopware\Bundle\CookieBundle\Structs\CookieStruct(
+                'ssupp',
                 '/^ssupp$/',
                 'Smartsupp Livechat',
                 \Shopware\Bundle\CookieBundle\Structs\CookieGroupStruct::COMFORT
