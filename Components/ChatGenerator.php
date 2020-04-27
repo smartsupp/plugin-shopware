@@ -31,14 +31,20 @@ class ChatGenerator
     protected $shopwareVersion;
 
     /**
+     * @var SmartsuppChatGenerator $smartsuppChatGenerator inherited class for client library with custom render logic
+     */
+    protected $smartsuppChatGenerator;
+
+    /**
      * ChatGenerator constructor.
      * @param ModelManager $modelManager model manager to access database layer
      * @param ShopwareReleaseStruct $shopwareVersion Shopware release version information
      */
-    public function __construct(ModelManager $modelManager, ShopwareReleaseStruct $shopwareVersion)
+    public function __construct(ModelManager $modelManager, ShopwareReleaseStruct $shopwareVersion, SmartsuppChatGenerator $smartsuppChatGenerator)
     {
         $this->modelManager = $modelManager;
         $this->shopwareVersion = $shopwareVersion;
+        $this->smartsuppChatGenerator = $smartsuppChatGenerator;
     }
 
     /**
@@ -51,8 +57,8 @@ class ChatGenerator
      */
     public function generateJS($key, $async = true)
     {
-        $chat = new \Smartsupp\ChatGenerator($key);
-        $chat->setPlatform('Shopware ' . $this->shopwareVersion->getVersion());
+        $this->smartsuppChatGenerator->setKey($key);
+        $this->smartsuppChatGenerator->setPlatform('Shopware ' . $this->shopwareVersion->getVersion());
 
         // get logged in user ID from session
         $userId = Shopware()->Session()->get(self::CUSTOMER_ID_KEY);
@@ -61,13 +67,13 @@ class ChatGenerator
             try {
                 /** @var Customer $user */
                 $user = $this->modelManager->find('Shopware\\Models\\Customer\\Customer', $userId);
-                $this->populateChatWithUserData($chat, $user);
+                $this->populateChatWithUserData($this->smartsuppChatGenerator, $user);
             } catch (Exception $e) { } // in case when user with given ID not found, should never happen
         }
         // set if to load async after some delay
-        $chat->setAsync($async);
+        $this->smartsuppChatGenerator->setAsync($async);
         // may throw exception when key is not set, this should not occur if this class is used properly
-        return $chat->render();
+        return $this->smartsuppChatGenerator->render();
     }
 
     /**
@@ -76,7 +82,7 @@ class ChatGenerator
      * @param \Smartsupp\ChatGenerator $chat
      * @param Customer $user customer database object
      */
-    protected function populateChatWithUserData(\Smartsupp\ChatGenerator $chat, Customer $user)
+    protected function populateChatWithUserData(SmartsuppChatGenerator $chat, Customer $user)
     {
         $fullName = $user->getFirstname() . ' ' . $user->getLastname();
 
