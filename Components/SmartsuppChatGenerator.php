@@ -53,17 +53,17 @@ class SmartsuppChatGenerator extends \Smartsupp\ChatGenerator
         }
 
         if ($this->platform) {
-            $params[] = "_smartsupp.sitePlatform = '" . self::javascriptEscape($this->platform) . "';";
+            $params[] = "_smartsupp.sitePlatform = '" . static::javascriptEscape($this->platform) . "';";
         }
 
         // set detailed visitor's info
         // basic info
         if ($this->email) {
-            $params2[] = "smartsupp('email', '" . self::javascriptEscape($this->email) . "');";
+            $params2[] = "smartsupp('email', '" . static::javascriptEscape($this->email) . "');";
         }
 
         if ($this->name) {
-            $params2[] = "smartsupp('name', '" . self::javascriptEscape($this->name) . "');";
+            $params2[] = "smartsupp('name', '" . static::javascriptEscape($this->name) . "');";
         }
 
 
@@ -72,8 +72,8 @@ class SmartsuppChatGenerator extends \Smartsupp\ChatGenerator
             $options = array();
 
             foreach ($this->variables as $key => $value) {
-                $options[] = self::javascriptEscape($value['id']) .": {label: '" .
-                    self::javascriptEscape($value['label']) . "', value: '" . self::javascriptEscape($value['value']) .
+                $options[] = static::javascriptEscape($value['id']) .": {label: '" .
+                    static::javascriptEscape($value['label']) . "', value: '" . static::javascriptEscape($value['value']) .
                     "'}";
             }
 
@@ -91,7 +91,7 @@ class SmartsuppChatGenerator extends \Smartsupp\ChatGenerator
                 $options = array();
 
                 foreach ($this->ga_options as $key => $value) {
-                    $options[] = "'" . self::javascriptEscape($key) . "': '" . self::javascriptEscape($value) . "'";
+                    $options[] = "'" . static::javascriptEscape($key) . "': '" . static::javascriptEscape($value) . "'";
                 }
 
                 $params[] = "_smartsupp.gaOptions = {" . implode(", ", $options) . "};";
@@ -136,9 +136,9 @@ class SmartsuppChatGenerator extends \Smartsupp\ChatGenerator
             </script>";
         }
 
-        $code = str_replace('%key%', self::javascriptEscape($this->key), $code);
-        $code = str_replace('%cookie_domain%', self::javascriptEscape($this->cookie_domain), $code);
-        $code = str_replace('%ga_key%', self::javascriptEscape($this->ga_key), $code);
+        $code = str_replace('%key%', static::javascriptEscape($this->key), $code);
+        $code = str_replace('%cookie_domain%', static::javascriptEscape($this->cookie_domain), $code);
+        $code = str_replace('%ga_key%', static::javascriptEscape($this->ga_key), $code);
 
 
         if ($print_out) {
