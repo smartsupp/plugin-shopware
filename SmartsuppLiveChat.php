@@ -2,6 +2,9 @@
 
 namespace SmartsuppLiveChat;
 
+use Shopware\Bundle\CookieBundle\CookieCollection;
+use Shopware\Bundle\CookieBundle\Structs\CookieGroupStruct;
+use Shopware\Bundle\CookieBundle\Structs\CookieStruct;
 use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\ConfigReader;
 use Shopware\Components\Plugin\Context\ActivateContext;
@@ -34,14 +37,14 @@ class SmartsuppLiveChat extends Plugin
     {
         // on plugin deactivation with enabled account clear the cache
         if ($this->isPluginActivated()) {
-            $deactivateContext->scheduleClearCache(ActivateContext::CACHE_LIST_DEFAULT);
+            $deactivateContext->scheduleClearCache([DeactivateContext::CACHE_TAG_TEMPLATE, DeactivateContext::CACHE_TAG_CONFIG]);
         }
     }
 
     /**
      * Register cookies
      *
-     * @return \Shopware\Bundle\CookieBundle\CookieCollection|void
+     * @return CookieCollection|void
      */
     public function addComfortCookie()
     {
@@ -51,15 +54,15 @@ class SmartsuppLiveChat extends Plugin
         }
 
         // needs to put here full class path to not break in older releases without Cookie bundle
-        $collection = new \Shopware\Bundle\CookieBundle\CookieCollection();
+        $collection = new CookieCollection();
 
         // add only if plugin is assigned with Smartsupp account
         if ($this->isPluginActivated()) {
-            $collection->add(new \Shopware\Bundle\CookieBundle\Structs\CookieStruct(
+            $collection->add(new CookieStruct(
                 'ssupp',
                 '/^ssupp$/',
                 'Smartsupp Livechat',
-                \Shopware\Bundle\CookieBundle\Structs\CookieGroupStruct::COMFORT
+                CookieGroupStruct::COMFORT
             ));
         }
 

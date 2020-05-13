@@ -2,6 +2,8 @@
 
 namespace SmartsuppLiveChat\Components;
 
+use Exception;
+
 /**
  * Class SmartsuppChatGenerator is helper class over Smartsupp ChatGenerator library - we extend render method for
  * cookie check.
@@ -14,12 +16,12 @@ class SmartsuppChatGenerator extends \Smartsupp\ChatGenerator
      *
      * @param bool|false $print_out Force to echo JS chat code instead of returning it.
      * @return string
-     * @throws \Exception Will reach exception when key param is not set.
+     * @throws Exception Will reach exception when key param is not set.
      */
     public function render($print_out = false)
     {
         if (empty($this->key)) {
-            throw new \Exception("At least KEY param must be set!");
+            throw new Exception("At least KEY param must be set!");
         }
 
         $params = array();
@@ -124,8 +126,6 @@ class SmartsuppChatGenerator extends \Smartsupp\ChatGenerator
             $code = "<script type=\"text/javascript\">
             setTimeout(function() {
                 let chatEnabled = (typeof $.getCookie('cookiePreferences') === 'undefined' && $.getCookie('allowCookie') == 1) || ($.getCookie('cookiePreferences') && $.getCookiePreference('ssupp'));
-
-                console.log(typeof $.getCookie('cookiePreferences') === 'undefined' && $.getCookie('allowCookie') == 1, $.getCookie('cookiePreferences') && $.getCookiePreference('ssupp'));
 
                 if (chatEnabled) {
                     window._smartsupp = window._smartsupp || {};
