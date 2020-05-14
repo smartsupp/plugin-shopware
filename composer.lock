@@ -1,0 +1,143 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "49f5ac54993c8a82eeec0bf776a3b9bd",
+    "packages": [
+        {
+            "name": "smartsupp/chat-code-generator",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smartsupp/chat-code-generator.git",
+                "reference": "3d26005b68858a7dec018ae17f3d2d4d1cecc560"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smartsupp/chat-code-generator/zipball/3d26005b68858a7dec018ae17f3d2d4d1cecc560",
+                "reference": "3d26005b68858a7dec018ae17f3d2d4d1cecc560",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Smartsupp": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Marek Gach",
+                    "role": "lead"
+                }
+            ],
+            "description": "This simple PHP class allows you to easily generate Smartsupp.com JS chat code.",
+            "homepage": "https://www.smartsupp.com/",
+            "keywords": [
+                "chat"
+            ],
+            "time": "2020-03-11T16:38:46+00:00"
+        },
+        {
+            "name": "smartsupp/php-partner-client",
+            "version": "1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smartsupp/php-auth-client.git",
+                "reference": "caa587a89ae551f1356f083baf29d31567468020"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smartsupp/php-auth-client/zipball/caa587a89ae551f1356f083baf29d31567468020",
+                "reference": "caa587a89ae551f1356f083baf29d31567468020",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Smartsupp": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Marek Gach",
+                    "role": "lead"
+                }
+            ],
+            "description": "API client allows to register and login (obtain API key) from Smartsupp partner API.",
+            "homepage": "https://www.smartsupp.com/",
+            "keywords": [
+                "chat"
+            ],
+            "time": "2019-09-30T15:08:09+00:00"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "phpstan/phpstan",
+            "version": "0.12.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpstan/phpstan.git",
+                "reference": "37bdd26a80235d0f9045b49f4151102b7831cbe2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/37bdd26a80235d0f9045b49f4151102b7831cbe2",
+                "reference": "37bdd26a80235d0f9045b49f4151102b7831cbe2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "bin": [
+                "phpstan",
+                "phpstan.phar"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.12-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "PHPStan - PHP Static Analysis Tool",
+            "time": "2020-03-02T22:29:43+00:00"
+        }
+    ],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
