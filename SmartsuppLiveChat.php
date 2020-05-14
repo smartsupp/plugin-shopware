@@ -9,6 +9,8 @@ use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\ConfigReader;
 use Shopware\Components\Plugin\Context\ActivateContext;
 use Shopware\Components\Plugin\Context\DeactivateContext;
+use Shopware\Components\Plugin\Context\InstallContext;
+use Shopware\Components\Plugin\Context\UninstallContext;
 
 // require Composer autoload
 require_once __DIR__ . '/vendor/autoload.php';
@@ -37,7 +39,18 @@ class SmartsuppLiveChat extends Plugin
     {
         // on plugin deactivation with enabled account clear the cache
         if ($this->isPluginActivated()) {
-            $deactivateContext->scheduleClearCache([DeactivateContext::CACHE_TAG_TEMPLATE, DeactivateContext::CACHE_TAG_CONFIG]);
+            $deactivateContext->scheduleClearCache([DeactivateContext::CACHE_TAG_TEMPLATE, DeactivateContext::CACHE_TAG_ROUTER, DeactivateContext::CACHE_TAG_PROXY,]);
+        }
+    }
+
+    /**
+     * @param UninstallContext $context
+     */
+    public function uninstall(UninstallContext $context)
+    {
+        // remove only cache when is plugin activated (Smartsupp account set) and not deactivated in Shopware
+        if ($this->isPluginActivated() && $this->isActive()) {
+            $context->scheduleClearCache([DeactivateContext::CACHE_TAG_TEMPLATE, DeactivateContext::CACHE_TAG_CONFIG]);
         }
     }
 
