@@ -2,6 +2,7 @@
 
 namespace SmartsuppLiveChat;
 
+use Enlight_Components_Db_Adapter_Pdo_Mysql;
 use Shopware\Bundle\CookieBundle\CookieCollection;
 use Shopware\Bundle\CookieBundle\Structs\CookieGroupStruct;
 use Shopware\Bundle\CookieBundle\Structs\CookieStruct;
@@ -9,7 +10,6 @@ use Shopware\Components\Plugin;
 use Shopware\Components\Plugin\ConfigReader;
 use Shopware\Components\Plugin\Context\ActivateContext;
 use Shopware\Components\Plugin\Context\DeactivateContext;
-use Shopware\Components\Plugin\Context\InstallContext;
 use Shopware\Components\Plugin\Context\UninstallContext;
 
 // require Composer autoload
@@ -21,6 +21,11 @@ require_once __DIR__ . '/vendor/autoload.php';
  */
 class SmartsuppLiveChat extends Plugin
 {
+    /**
+     * @var Enlight_Components_Db_Adapter_Pdo_Mysql
+     */
+    protected $db;
+
     const PLUGIN_NAME = 'SmartsuppLiveChat';
 
     /**
@@ -52,6 +57,21 @@ class SmartsuppLiveChat extends Plugin
         if ($this->isPluginActivated() && $this->isActive()) {
             $context->scheduleClearCache([DeactivateContext::CACHE_TAG_TEMPLATE, DeactivateContext::CACHE_TAG_CONFIG]);
         }
+
+        $this->removeSnippetsData();
+    }
+
+    /**
+     * Remove snippets automatically added by Shopware from database.
+     */
+    protected function removeSnippetsData()
+    {
+        // remove all the data in plugin namespace from s_core_snippets table
+        /** @var Enlight_Components_Db_Adapter_Pdo_Mysql $db */
+        $db = Shopware()->Container()->get('db');
+        $pluginNamespace = self::PLUGIN_NAME . '/';
+
+        $db->delete('s_core_snippets', "name LIKE \"%{$pluginNamespace}%\"");
     }
 
     /**
