@@ -1,29 +1,44 @@
 {
-  "name": "smartsupp/live-chat",
-  "type": "shopware-plugin",
-  "description": "Live chat suited for your Shopware website. Start a personal conversation with your visitors and turn them into happy customers.",
-  "keywords": [
-    "smartsupp",
-    "chat",
-    "php",
-    "shopware"
-  ],
-  "homepage": "https://www.smartsupp.com/",
-  "license": "GPL-3.0-or-later",
+  "name": "supp/smartsupp-live-chat",
+  "description": "Smart live chat that can rapidly boost your business",
+  "keywords": ["shopware6", "shopware-6", "smartsupp", "live-chat", "livechat", "chatbot", "chat", "widget", "messaging"],
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
   "authors": [
-    {
-      "name": "Marek Gach",
-      "email": "gach@kurzor.net"
-    }
+      {
+          "name": "Smartsupp.com, s.r.o."
+      }
   ],
-  "extra": {
-    "installer-name": "SmartsuppLiveChat"
-  },
   "require": {
-    "smartsupp/php-partner-client": "^1.0",
-    "smartsupp/chat-code-generator": "^1.0"
+      "shopware/core": "*"
   },
-  "require-dev": {
-    "phpstan/phpstan": "^0.12.7"
-  }
+  "extra": {
+      "shopware-plugin-class": "Supp\\SmartsuppLiveChat\\SuppSmartsuppLiveChat",
+      "copyright": "(c) by Smartsupp.com, s.r.o",
+      "label": {
+          "de-DE": "Smartsupp Live Chat",
+          "en-GB": "Smartsupp Live Chat"
+      },
+      "description": {
+          "de-DE": "Steigern Sie Ihr Geschäft mit Smart Live-Chat",
+          "en-GB": "Smart live chat that can rapidly boost your business"
+      },
+      "manufacturerLink": {
+          "de-DE": "https://smartsupp.com/de",
+          "en-GB": "https://smartsupp.com"
+      },
+      "supportLink": {
+          "de-DE": "https://smartsupp.com/de/help",
+          "en-GB": "https://smartsupp.com/help"
+      }
+  },
+  "autoload": {
+      "psr-4": {
+          "Supp\\SmartsuppLiveChat\\": "src/"
+      }
+  },
+  "conflict": {
+    "shopware/storefront": "<6,>=7",
+    "shopware/administration": "<6,>=7"
+}
 }

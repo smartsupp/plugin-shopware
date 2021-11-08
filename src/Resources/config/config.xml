@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Smartsupp settings</title>
+        <input-field>
+            <name>smartSuppChatKey</name>
+            <label>Smartsupp key</label>
+            <helpText>To get the Smartsupp key, log into your Smartsupp account and go to Settings > Chat box > Chat code</helpText>
+        </input-field>
+        <input-field type="bool">
+            <name>hasSWConsentSupport</name>
+            <defaultValue>true</defaultValue>
+            <label>Shopware Cookie consent support</label>
+            <label lang="de-DE">Shopware Cookie Consent Unterstützung</label>
+            <helpText>Activate for integration into Shopware consent manager. Deactivate this, if you plan to use external cookie consent manager</helpText>
+            <helpText lang="de-DE">Deaktivieren, wenn Sie einen externen Cookie Consent Manager benutzen möchten</helpText>
+        </input-field>
+    </card>
+</config>
