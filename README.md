@@ -1,5 +1,5 @@
-# Smartsupp plugin - Shopware 6
-Official implementation of Smartsupp into Shopware 6. Older version available in v5 branche.
+# Smartsupp plugin - Shopware 6 (IN PROGRESS, DON'T USE)
+Official implementation of Smartsupp into Shopware 6. Older version available in v5 branche. 
 
 ## Ways to install
 
