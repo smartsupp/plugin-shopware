@@ -3,19 +3,44 @@
         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
 
     <card>
-        <title>Smartsupp settings</title>
+        <title>General settings</title>
         <input-field>
             <name>smartSuppChatKey</name>
             <label>Smartsupp key</label>
+            <label lang="de-DE">Smartsupp-Key Code</label>
             <helpText>To get the Smartsupp key, log into your Smartsupp account and go to Settings > Chat box > Chat code</helpText>
+            <helpText lang="de-DE">Um Ihren Smartsupp-Schlüssel zu erhalten, melden Sie sich bei Ihrem Smartsupp-Konto an und gehen Sie zu Einstellungen > Chat-Box > Live-Chat-Code</helpText>
         </input-field>
         <input-field type="bool">
             <name>hasSWConsentSupport</name>
             <defaultValue>true</defaultValue>
             <label>Shopware Cookie consent support</label>
             <label lang="de-DE">Shopware Cookie Consent Unterstützung</label>
-            <helpText>Activate for integration into Shopware consent manager. Deactivate this, if you plan to use external cookie consent manager</helpText>
+            <helpText>Activate for integration into Shopware consent manager. Deactivate this, if you plan to use external cookie consent manager, or none</helpText>
             <helpText lang="de-DE">Deaktivieren, wenn Sie einen externen Cookie Consent Manager benutzen möchten</helpText>
+        </input-field>
+        <input-field type="colorpicker">
+            <name>smartSuppColor</name>
+            <label>Chat box color</label>
+            <label lang="de-DE">Chatbox Farbe</label>
+        </input-field>
+        <input-field type="textarea">
+            <name>smartSuppConfig</name>
+            <label>Custom configuration</label>
+            <label lang="de-DE">Shopware Cookie Consent Unterstützung</label>
+            <helpText>Modify configurable parts of chat box and its behavior by adding simple one line codes. More at docs.smartsupp.com/chat-box/configuration</helpText>
+            <helpText lang="de-DE">Ändern Sie konfigurierbare Teile der Chatbox und ihr Verhalten, indem Sie einfache einzeilige Codes hinzufügen. Mehr unter docs.smartsupp.com/chat-box/configuration</helpText>
+        </input-field>
+    </card>
+
+    <card>
+        <title>JS API</title>
+        <input-field type="textarea">
+            <name>smartSuppAPI</name>
+            <label>Use to further customize your chat</label>
+            <label lang="de-DE">Verwenden Sie diese Option, um Ihren Chat weiter anzupassen</label>
+            <helpText>docs.smartsupp.com/chat-box</helpText>
+            <helpText lang="de-DE">docs.smartsupp.com/chat-box</helpText>
         </input-field>
     </card>
 </config>
