@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Supp\SmartsuppLiveChat\Struct;
+namespace Smartsupp\SmartsuppChat\Struct;
 
 
 class ConfigStruct extends \Shopware\Core\Framework\Struct\Struct
